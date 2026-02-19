@@ -1,8 +1,15 @@
 package se.lexicon.ecommerceplatform.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.Instant;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 
 @Entity
 @Table(name = "customers")
