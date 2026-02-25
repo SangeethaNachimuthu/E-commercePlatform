@@ -31,7 +31,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         System.out.println("#################");
 
-        Address address = Address.builder()
+        /*Address address = Address.builder()
                 .street("Storgatan")
                 .city("Malmo")
                 .zipcode("34565")
@@ -52,6 +52,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 .address(address)
                 .profile(userProfile)
                 .build();
-        customerRepository.save(customer);
+        customerRepository.save(customer);*/
     }
 }
