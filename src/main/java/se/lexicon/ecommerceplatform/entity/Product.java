@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,5 +35,27 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "products_promotions",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "promotion_id")
+    )
+    private Set<Promotion> productsAndPromotions = new HashSet<>();
+
+    public void addPromotions(Promotion promotion) {
+        if (promotion == null) {
+            throw new IllegalArgumentException("Promotion can't be null");
+        }
+        productsAndPromotions.add(promotion);
+    }
+
+    public void removePromotions(Promotion promotion) {
+        if (promotion == null) {
+            throw new IllegalArgumentException("Promotion can't be null");
+        }
+        productsAndPromotions.remove(promotion);
+    }
 
 }
