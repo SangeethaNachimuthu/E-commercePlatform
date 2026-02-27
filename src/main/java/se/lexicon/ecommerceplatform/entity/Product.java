@@ -26,7 +26,12 @@ public class Product {
     @Column
     private String name;
 
-    @Transient
+    @ElementCollection  //This annotation creates the collection table.
+    @CollectionTable(
+            name = "product_images",
+            joinColumns = @JoinColumn(name = "product_id")
+    )
+    @Column(name = "image_url")
     private List<String> imageUrls;
 
     @Column
@@ -36,7 +41,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY) //This annotation creates the mapper table.
     @JoinTable(
             name = "products_promotions",
             joinColumns = @JoinColumn(name = "product_id"),
