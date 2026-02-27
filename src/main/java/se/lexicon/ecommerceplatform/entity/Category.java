@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder
 
 @Entity
 @Table(name = "categories")

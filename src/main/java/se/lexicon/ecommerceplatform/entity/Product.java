@@ -14,6 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@Builder
 
 @Entity
 @Table(name = "products")
