@@ -9,11 +9,12 @@ public interface AddressRepository extends JpaRepository<Address, Long> {
 
     List<Address> findByZipcode(String zipCode);
 
-    List<Address> findByCity(String city);
+    //Optional Task
+    List<Address> findByCityIgnoreCase(String city);
 
-    List<Address> findByStreet(String street);
+    List<Address> findByStreetContainingIgnoreCase(String streetKeyWord);
 
     boolean existsByZipcode(String zipcode);
 
-    List<Address> findByZipcodeStartingWith(String zipcode);
+    List<Address> findByZipcodeStartingWith(String prefix);
 }

@@ -11,13 +11,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //SELECT p.* FROM products p
     //           JOIN categories c ON p.category_id = c.id
     //           WHERE c.name = '?';
-    List<Product> findByCategoryName(String name);
+    List<Product> findByCategory_NameIgnoreCase(String categoryName);
 
     //SELECT * FROM products WHERE price BETWEEN ? AND ?;
     List<Product> findByPriceBetween(BigDecimal priceAfter, BigDecimal priceBefore);
 
+    //Optional Tasks
     //SELECT * FROM products WHERE name = '%?%';
-    List<Product> findByNameContaining(String name);
+    List<Product> findByNameContainingIgnoreCase(String name);
 
     //SELECT * FROM products WHERE price < ?;
     List<Product> findByPriceLessThan(BigDecimal priceIsLessThan);
@@ -29,5 +30,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     long countByCategory_Id(Long categoryId);
 
     //SELECT * FROM products WHERE category_id = 2;
-    List<Product> findByCategoryId(Long categoryId);
+    List<Product> findByCategory_Id(Long categoryId);
 }

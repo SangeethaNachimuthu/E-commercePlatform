@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 @Entity
 @Table(name = "orders")
@@ -20,14 +20,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
+    @EqualsAndHashCode.Include
+    @ToString.Include
     private Long id;
 
     @Setter
     @Column(nullable = false)
+    @ToString.Include
     private Instant orderDate;
 
     @Setter
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
+    @ToString.Include
     private OrderStatus status;
 
     @Setter
@@ -39,7 +44,7 @@ public class Order {
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<OrderItem> items;
+    private List<OrderItem> items = new ArrayList<>();
 
     @PrePersist
     private void prePersist() {

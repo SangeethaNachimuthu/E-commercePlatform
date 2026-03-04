@@ -4,16 +4,18 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import se.lexicon.ecommerceplatform.entity.UserProfile;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserProfileRepository extends JpaRepository<UserProfile, Long> {
 
-    List<UserProfile> findByNickname(String nickname);
+    Optional<UserProfile> findByNicknameIgnoreCase(String nickname);
 
     List<UserProfile> findByPhoneNumberContains(String phoneNumber);
 
-    List<UserProfile> findByBioIsNotNull(String bio);
+    //Optional Task
+    List<UserProfile> findByBioIsNotNull();
 
-    List<UserProfile> findByNicknameStartingWith(String nickname);
+    List<UserProfile> findByNicknameStartingWithIgnoreCase(String nickname);
 
     boolean existsByPhoneNumberStartsWith(String phoneNumber);
 }

@@ -67,7 +67,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 Category.builder().name("Sports").build()
         );
         for (Category category : categories) {
-            if (!categoryRepository.existsByName(category.getName())) {
+            if (!categoryRepository.existsByNameIgnoreCase(category.getName())) {
                 categoryRepository.save(category);
             }
         }

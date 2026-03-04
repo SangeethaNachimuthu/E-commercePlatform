@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,8 +13,8 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
 
 @Entity
@@ -22,25 +23,32 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @ToString.Include
     private Long Id;
 
-    @Column
+    @Column(nullable = false, length = 200)
+    @ToString.Include
     private String name;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    @ToString.Include
+    private BigDecimal price;
+
 
     @ElementCollection  //This annotation creates the collection table.
     @CollectionTable(
             name = "product_images",
             joinColumns = @JoinColumn(name = "product_id")
     )
-    @Column(name = "image_url")
-    private List<String> imageUrls;
+    @Column(name = "image_url", length = 500)
+    private List<String> imageUrls = new ArrayList<>();
 
-    @Column
-    private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @ManyToOne(fetch = FetchType.LAZY)  // Many products belong to one category (avoid default EAGER)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
 
     @ManyToMany(fetch = FetchType.LAZY) //This annotation creates the mapper table.
     @JoinTable(

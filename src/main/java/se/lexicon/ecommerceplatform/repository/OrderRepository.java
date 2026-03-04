@@ -24,6 +24,10 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @EntityGraph(attributePaths = "items")
     List<Order> findByStatus(OrderStatus status);
 
+    @Query("select distinct o from Order o left join fetch o.items where o.status = :status")
+    List<Order> findByStatusWithItems(@Param("status") OrderStatus status);
+
+
     //SELECT * FROM orders WHERE order_date > ?;
     List<Order> findByOrderDateAfter(Instant orderDateAfter);
 

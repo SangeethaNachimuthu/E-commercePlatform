@@ -9,19 +9,20 @@ import java.util.Optional;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    Optional<Customer> findByEmail(String email);
+    Optional<Customer> findByEmailIgnoreCase(String email);
 
     List<Customer> findByLastNameIgnoreCase(String lastName);
 
-    List<Customer> findByAddress_City(String city);
+    List<Customer> findByAddress_CityIgnoreCase(String city);
 
-    List<Customer> findByEmailContains(String email);
+    //Optional Task
+    List<Customer> findByEmailContainingIgnoreCase(String keyword);
 
     List<Customer> findByCreatedAtAfter(Instant createdAtAfter);
 
     List<Customer> findByCreatedAtBetween(Instant createdAtAfter, Instant createdAtBefore);
 
-    boolean existsByAddress_City(String addressCity);
+    long countByAddress_CityIgnoreCase(String addressCity);
 
-    boolean existsByEmail(String email);
+    boolean existsByEmailIgnoreCase(String email);
 }

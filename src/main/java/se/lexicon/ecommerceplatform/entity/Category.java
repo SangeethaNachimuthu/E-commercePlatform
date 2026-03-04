@@ -8,8 +8,8 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Builder
 
 @Entity
@@ -19,10 +19,13 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
+    @EqualsAndHashCode.Include
+    @ToString.Include
     private Long id;
 
     @Column
     @Setter
+    @ToString.Include
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
