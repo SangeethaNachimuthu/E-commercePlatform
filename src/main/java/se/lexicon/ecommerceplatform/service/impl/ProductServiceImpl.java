@@ -61,6 +61,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProductResponseDTO> searchByName(String name) {
 
         if (name == null) {
