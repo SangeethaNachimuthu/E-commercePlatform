@@ -27,13 +27,13 @@ public class ProductMapper {
         if (productRequestDTO == null)
             throw new IllegalArgumentException("Product Request cannot be null");
 
-        Category category = new Category();
-        category.setId(productRequestDTO.categoryId());
+//        Category category = new Category();
+//        category.setId(productRequestDTO.categoryId());
 
         Product product = new Product();
         product.setName(productRequestDTO.name());
         product.setPrice(productRequestDTO.price());
-        product.setCategory(category);
+      //  product.setCategory(category);
 
         return product;
     }

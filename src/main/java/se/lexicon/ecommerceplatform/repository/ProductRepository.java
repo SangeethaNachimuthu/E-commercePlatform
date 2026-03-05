@@ -31,4 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     //SELECT * FROM products WHERE category_id = 2;
     List<Product> findByCategory_Id(Long categoryId);
+
+    boolean existsByCategory_Id(Long categoryId);
 }
