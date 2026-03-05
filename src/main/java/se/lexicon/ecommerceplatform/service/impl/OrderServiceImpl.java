@@ -1,5 +1,6 @@
 package se.lexicon.ecommerceplatform.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.ecommerceplatform.dto.request.OrderItemRequestDTO;
 import se.lexicon.ecommerceplatform.dto.request.OrderRequestDTO;
@@ -14,6 +15,7 @@ import se.lexicon.ecommerceplatform.service.OrderService;
 
 import java.time.Instant;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
     private final CustomerRepository customerRepository;
