@@ -70,6 +70,10 @@ public class ProductServiceImpl implements ProductService {
 
         List<Product> productList = productRepository.findByNameContainingIgnoreCase(name);
 
+        if (productList.isEmpty()) {
+            throw new ResourceNotFoundException("No product available for the name: " + name);
+        }
+
         return productList
                 .stream()
                 .map(mapper::toResponse)

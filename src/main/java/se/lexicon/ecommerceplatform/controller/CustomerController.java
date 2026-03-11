@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.lexicon.ecommerceplatform.dto.request.CustomerRequestDTO;
 import se.lexicon.ecommerceplatform.dto.response.CustomerResponseDTO;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/customers")
+@Validated
 public class CustomerController {
 
     private final CustomerService customerService;
