@@ -64,6 +64,8 @@ GET http://localhost:8080/api/v1/products/search/name?name=Mouse
 Accept: application/json
 
 ### CREATE a Category
+
+# @name create a category
 POST http://localhost:8080/api/v1/categories
 Accept: application/json
 Content-Type: application/json
@@ -77,3 +79,18 @@ Content-Type: application/json
 # @name get all categories
 GET http://localhost:8080/api/v1/categories
 Accept: application/json
+
+### Place an Order
+
+# @name place an order
+POST http://localhost:8080/api/v1/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "orderItems": [
+    { "productId": 1, "quantity": 1 },
+    { "productId": 2, "quantity": 1 }
+  ]
+}
