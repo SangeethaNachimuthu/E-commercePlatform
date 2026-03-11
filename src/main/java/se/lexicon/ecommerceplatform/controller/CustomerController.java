@@ -1,5 +1,7 @@
 package se.lexicon.ecommerceplatform.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/customers")
 @Validated
+@Tag(name = "Customer Controller", description = "APIs for managing customers")
 public class CustomerController {
 
     private final CustomerService customerService;
 
     @Autowired
     public CustomerController(CustomerService customerService) {
+
         this.customerService = customerService;
     }
 
     @PostMapping
+    @Operation(summary = "Create a new customer")
+    @Tag(name = "Customer Operations")
     public ResponseEntity<CustomerResponseDTO> create(@Valid @RequestBody CustomerRequestDTO requestDTO) {
 
         CustomerResponseDTO responseDTO = customerService.register(requestDTO);
@@ -33,6 +39,8 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Find a customer by id")
+    @Tag(name = "Customer Operations")
     public ResponseEntity<CustomerResponseDTO> findById(@PathVariable @Positive Long id) {
 
         CustomerResponseDTO responseDTO = customerService.findById(id);
@@ -43,6 +51,8 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update a customer by id")
+    @Tag(name = "Customer Operations")
     public ResponseEntity<CustomerResponseDTO> update(@PathVariable @Positive Long id,
                                                       @Valid @RequestBody CustomerRequestDTO requestDTO) {
 
