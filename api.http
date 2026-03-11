@@ -1,0 +1,39 @@
+### CREATE a Customer
+
+# @name create a new customer
+POST http://localhost:8080/api/v1/customers
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "Rose",
+  "lastName": "Mari",
+  "email": "rose.mari@gmail.com",
+  "password": "1234",
+  "street": "Malarvagen",
+  "city": "Lund",
+  "zipcode": "34326"
+}
+
+### Get Customer by Id
+
+# @name get customer by id
+GET http://localhost:8080/api/v1/customers/1
+Accept: application/json
+
+### Update Customer by Id
+
+# @name update a customer by id
+PUT http://localhost:8080/api/v1/customers/2
+Accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "Rose",
+  "lastName": "Mari",
+  "email": "rose.mari@gmail.com",
+  "password": "1234",
+  "street": "Malarvagen",
+  "city": "Malmo",
+  "zipcode": "34326"
+}
