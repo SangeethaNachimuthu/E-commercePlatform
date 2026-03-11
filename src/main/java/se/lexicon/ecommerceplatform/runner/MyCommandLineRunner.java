@@ -57,7 +57,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 .address(address)
                 .profile(userProfile)
                 .build();
-        customerRepository.save(customer);
+        customerRepository.save(customer);*/
 
         List<Category> categories = List.of(
                 Category.builder().name("Electronics").build(),
@@ -73,7 +73,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         }
 
 
-        Category electronicsCategory = categoryRepository.findByNameIgnoreCase("Electronics").getFirst();
+/*        Category electronicsCategory = categoryRepository.findByNameIgnoreCase("Electronics").getFirst();
         Category booksCategory = categoryRepository.findByNameIgnoreCase("Books").getFirst();
         Category bagsCategory = categoryRepository.findByNameIgnoreCase("Bags").getFirst();
 

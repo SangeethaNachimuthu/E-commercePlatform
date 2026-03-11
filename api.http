@@ -37,3 +37,28 @@ Content-Type: application/json
   "city": "Malmo",
   "zipcode": "34326"
 }
+
+### CREATE a Product
+
+# @name create a product
+POST http://localhost:8080/api/v1/products
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Laptop",
+  "price": 13000.00,
+  "categoryId": 1
+}
+
+### GET All
+
+# @name get all products
+GET http://localhost:8080/api/v1/products
+Accept: application/json
+
+### GET By Name
+
+# @name search by name
+GET http://localhost:8080/api/v1/products/search/name?name=Mouse
+Accept: application/json

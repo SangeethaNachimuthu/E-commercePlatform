@@ -2,6 +2,7 @@ package se.lexicon.ecommerceplatform.mapper;
 
 import org.springframework.stereotype.Component;
 import se.lexicon.ecommerceplatform.dto.request.ProductRequestDTO;
+import se.lexicon.ecommerceplatform.dto.response.CategoryResponseDTO;
 import se.lexicon.ecommerceplatform.dto.response.ProductResponseDTO;
 import se.lexicon.ecommerceplatform.entity.Category;
 import se.lexicon.ecommerceplatform.entity.Product;
@@ -36,5 +37,16 @@ public class ProductMapper {
       //  product.setCategory(category);
 
         return product;
+    }
+
+    public CategoryResponseDTO toCategoryResponse(Category category) {
+
+        if (category == null)
+            throw new IllegalArgumentException("Category cannot be null");
+
+        return new CategoryResponseDTO(
+                category.getId(),
+                category.getName()
+        );
     }
 }
