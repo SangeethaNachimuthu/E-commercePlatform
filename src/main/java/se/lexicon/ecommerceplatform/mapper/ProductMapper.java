@@ -39,14 +39,5 @@ public class ProductMapper {
         return product;
     }
 
-    public CategoryResponseDTO toCategoryResponse(Category category) {
 
-        if (category == null)
-            throw new IllegalArgumentException("Category cannot be null");
-
-        return new CategoryResponseDTO(
-                category.getId(),
-                category.getName()
-        );
-    }
 }

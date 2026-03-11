@@ -62,3 +62,18 @@ Accept: application/json
 # @name search by name
 GET http://localhost:8080/api/v1/products/search/name?name=Mouse
 Accept: application/json
+
+### CREATE a Category
+POST http://localhost:8080/api/v1/categories
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Toys"
+}
+
+### GET All Categories
+
+# @name get all categories
+GET http://localhost:8080/api/v1/categories
+Accept: application/json
