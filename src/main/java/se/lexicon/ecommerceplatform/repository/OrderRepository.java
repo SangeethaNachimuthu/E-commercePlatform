@@ -37,8 +37,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     //Find orders that contain a specific product.
     //SELECT DISTINCT o.* FROM orders o
     //        JOIN order_items i ON o.id = i.order_id WHERE i.product_id = ?;
-    @Query("SELECT DISTINCT o FROM Order o JOIN o.items i WHERE i.product.Id = ?")
-    List<Order> findByProductId(@Param("product_id") Long product_id);
+    @Query("SELECT DISTINCT o FROM Order o JOIN o.items i WHERE i.product.Id = :productId")
+    List<Order> findByProductId(@Param("productId") Long productId);
 
     //SELECT COUNT(*) FROM orders WHERE status = ?;
     long countByStatus(OrderStatus status);

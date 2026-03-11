@@ -57,7 +57,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
                 .address(address)
                 .profile(userProfile)
                 .build();
-        customerRepository.save(customer);*/
+        customerRepository.save(customer);
 
         List<Category> categories = List.of(
                 Category.builder().name("Electronics").build(),
@@ -99,6 +99,6 @@ public class MyCommandLineRunner implements CommandLineRunner {
                         .category(electronicsCategory)
                         .build()
         );
-        productRepository.saveAll(products);
+        productRepository.saveAll(products);*/
     }
 }
